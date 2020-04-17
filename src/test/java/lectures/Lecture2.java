@@ -10,12 +10,33 @@ public class Lecture2 {
 
   @Test
   public void range() throws Exception {
+//    imperative
+    System.out.println("for i");
+    for (int i = 0; i < 10 ; i++) {
+      System.out.println(i);
+    }
+//    declarative
+    System.out.println("Exclusive, does not include 10");
+    IntStream.range(0,10)
+            .forEach(System.out::println);
 
+    System.out.println("Inclusive, includes 10");
+    IntStream.rangeClosed(0,10)
+            .forEach(System.out::println);
   }
 
   @Test
   public void rangeIteratingLists() throws Exception {
     List<Person> people = MockData.getPeople();
+//    IntStream
+    IntStream.range(0, people.size())
+    .forEach( index -> {
+      Person person = people.get(index);
+      System.out.println(person);
+    });
+
+//    forEach
+    people.forEach(System.out::println);
 
   }
 
